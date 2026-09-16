@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "about": "The things the business operates (properties, locations, stores, vehicles, products, client accounts), with every identifier each system uses and any disagreement between sources.",
+  "assets": []
+}

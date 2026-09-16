@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "about": "External systems, what each is authoritative for, and the external fields more than one job writes.",
+  "systems": [
+    {
+      "id": "pos",
+      "name": "Point-of-sale and wholesale ordering system",
+      "authoritative_for": [
+        "orders",
+        "item availability",
+        "store sales"
+      ]
+    },
+    {
+      "id": "reviews-site",
+      "name": "Public review site listings for both stores",
+      "authoritative_for": [
+        "customer reviews and replies"
+      ]
+    },
+    {
+      "id": "bank",
+      "name": "Operating bank account",
+      "authoritative_for": [
+        "whether money arrived or left"
+      ]
+    },
+    {
+      "id": "email",
+      "name": "Company email (orders inbox and outbound mail)",
+      "authoritative_for": [
+        "wholesale orders sent by email",
+        "what automated mail was sent"
+      ]
+    },
+    {
+      "id": "permits-portal",
+      "name": "County health department portal",
+      "authoritative_for": [
+        "food-service permits and inspection results"
+      ]
+    }
+  ],
+  "shared_surfaces": [
+    {
+      "surface": "POS item availability (sold-out flags)",
+      "writers": [
+        "win:Order Intake (marks wholesale-only items unavailable when capacity is full)",
+        "store staff (by hand)"
+      ],
+      "coordination": "Order Intake only sets flags it created, tagged 'auto'; staff flags are never cleared by the job."
+    }
+  ]
+}

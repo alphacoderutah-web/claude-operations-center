@@ -1,0 +1,29 @@
+# Secrets: never commit these (anything not ignored can end up in a commit)
+.env
+.env.*
+!.env.example
+.dev.vars
+*.pem
+*.key
+*credentials*.json
+.auth/
+*storage-state*.json
+browser-profiles/
+
+# Customer, staff and owner data, and raw evidence
+data/
+evidence/
+exports/
+logs/
+
+# Build and tool output
+node_modules/
+dist/
+.wrangler/
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.DS_Store
+Thumbs.db
+desktop.ini

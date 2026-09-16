@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "about": "One entry per project. `id` is permanent; `path` may change. See procedures/new-project.md.",
+  "projects": []
+}

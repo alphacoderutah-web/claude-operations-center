@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "about": "Every scheduled or always-on job, with how to pause it.",
+  "automations": [
+    {
+      "id": "win:Order Intake",
+      "kind": "windows-task",
+      "project": "order-intake",
+      "cadence": "every 10 min",
+      "runs_as": "S4U",
+      "runs_signed_out": true,
+      "needs_browser": "none",
+      "enabled": true,
+      "writes": [
+        "POS orders",
+        "confirmation emails"
+      ],
+      "access": [
+        "pos-api",
+        "orders-inbox"
+      ],
+      "pause": "elevated: python tools/ops.py pause --project order-intake --apply"
+    },
+    {
+      "id": "routine:daily-production-plan",
+      "kind": "claude-routine",
+      "project": "daily-production-plan",
+      "cadence": "daily 16:00",
+      "runs_signed_out": false,
+      "needs_browser": "none",
+      "enabled": true,
+      "writes": [
+        "email to the head baker"
+      ],
+      "access": [
+        "pos-api"
+      ],
+      "pause": "Claude app > Routines > daily-production-plan > turn off"
+    },
+    {
+      "id": "routine:review-replies-monthly",
+      "kind": "claude-routine",
+      "project": "review-replies",
+      "cadence": "1st of the month 10:00",
+      "runs_signed_out": false,
+      "needs_browser": "owner-browser",
+      "enabled": true,
+      "writes": [
+        "public review replies"
+      ],
+      "access": [
+        "owner-browser"
+      ],
+      "pause": "Claude app > Routines > review-replies-monthly > turn off"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+{"at": "2026-09-16T09:05:00-04:00", "subject": "company", "summary": "Operations center initialized for Harborline Bakery Co. (America/New_York).", "evidence": ["ops.config.json", "instructions/company.md", "COMPANY.md", "PROJECTS.md"]}
+{"at": "2026-09-16T09:05:00-04:00", "subject": "company", "summary": "Baseline survey: 4 projects, 3 automations, 3 assets, 3 access references.", "evidence": ["evidence/2026-09-16-baseline/"]}

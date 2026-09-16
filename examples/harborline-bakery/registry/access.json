@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "about": "Where each credential or signed-in session lives and how it is renewed. References only, never values.",
+  "services": [
+    {
+      "id": "pos-api",
+      "service": "POS API token",
+      "system": "pos",
+      "mechanism": "API token",
+      "stored_in": "Projects/Order Intake/.env (not read)",
+      "used_by": [
+        "win:Order Intake",
+        "routine:daily-production-plan"
+      ],
+      "renewal": "Create a new token in the POS developer settings, update .env, revoke the old one.",
+      "detection": "Order Intake logs 401 responses and emails the owner."
+    },
+    {
+      "id": "orders-inbox",
+      "service": "Wholesale orders inbox (IMAP)",
+      "system": "email",
+      "mechanism": "App password",
+      "stored_in": "Projects/Order Intake/.env (not read)",
+      "used_by": [
+        "win:Order Intake"
+      ],
+      "renewal": "Create a new app password for the orders mailbox and update .env.",
+      "detection": "Order Intake heartbeat email after 2 h without a run."
+    },
+    {
+      "id": "owner-browser",
+      "service": "The owner's browser, driven by Claude",
+      "mechanism": "Signed-in sessions; the owner's password manager",
+      "stored_in": "Owner's browser profile",
+      "used_by": [
+        "routine:review-replies-monthly"
+      ],
+      "renewal": "The owner signs in inside the open tab.",
+      "detection": "The routine's own report (a 'succeeded' run can still have stopped at a sign-in page)."
+    }
+  ]
+}

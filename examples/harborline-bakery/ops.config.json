@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "company": {
+    "name": "Harborline Bakery Co.",
+    "timezone": "America/New_York"
+  },
+  "workspace": {
+    "root": "..",
+    "projects_dir": "Projects"
+  },
+  "functions": {
+    "production": "Production",
+    "retail": "Retail stores",
+    "wholesale": "Wholesale",
+    "money": "Money",
+    "marketing": "Marketing",
+    "compliance": "Licensing & compliance",
+    "oversight": "Oversight"
+  },
+  "standing_skills": [
+    "agency-conduct",
+    "drive-the-task"
+  ],
+  "instructions": {
+    "source": "instructions/company.md",
+    "install_to": "~/harborline/CLAUDE.md"
+  },
+  "template": {
+    "upstream_url": "https://github.com/alphacoderutah-web/claude-operations-center",
+    "bootstrapped": true
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "about": "One entry per project. `id` is permanent; `path` may change.",
+  "projects": [
+    {
+      "id": "order-intake",
+      "name": "Order Intake",
+      "function": "wholesale",
+      "classification": "business",
+      "lifecycle": "scheduled",
+      "purpose": "Reads wholesale orders from the orders inbox, creates them in the POS, and replies with a confirmation.",
+      "path": "Projects/Order Intake",
+      "repo": {
+        "path": "Projects/Order Intake",
+        "remote": "example-org/order-intake",
+        "visibility": "private",
+        "default_branch": "main"
+      },
+      "systems": [
+        {
+          "system": "email",
+          "modes": [
+            "read",
+            "send"
+          ]
+        },
+        {
+          "system": "pos",
+          "modes": [
+            "read",
+            "write"
+          ]
+        }
+      ],
+      "automations": [
+        "win:Order Intake"
+      ],
+      "writes": [
+        "POS wholesale orders",
+        "POS item availability flags tagged 'auto'",
+        "confirmation emails to wholesale customers"
+      ],
+      "authority": "Standing authorization in Projects/Order Intake/CLAUDE.md:12 (owner, 2026-05-02): create orders up to 200 units per customer per day; larger orders wait for approval.",
+      "release": {
+        "runs_from": "working tree (Python)",
+        "checks": "unit tests + dry run against the sandbox POS",
+        "deploy_authority": "auto"
+      },
+      "recovery": "The order ledger prevents duplicate orders; see the project's RUNBOOK.md."
+    },
+    {
+      "id": "daily-production-plan",
+      "name": "Daily Production Plan",
+      "function": "production",
+      "classification": "business",
+      "lifecycle": "scheduled",
+      "purpose": "Builds tomorrow's bake plan per location from confirmed orders and par levels and emails it to the head baker.",
+      "path": "Projects/Production Plan",
+      "repo": {
+        "path": "Projects/Production Plan",
+        "remote": "example-org/production-plan",
+        "visibility": "private",
+        "default_branch": "main"
+      },
+      "depends_on": [
+        {
+          "project": "order-intake",
+          "kind": "data",
+          "detail": "reads the wholesale orders Order Intake created"
+        }
+      ],
+      "systems": [
+        {
+          "system": "pos",
+          "modes": [
+            "read"
+          ]
+        },
+        {
+          "system": "email",
+          "modes": [
+            "send"
+          ]
+        }
+      ],
+      "automations": [
+        "routine:daily-production-plan"
+      ],
+      "writes": [
+        "email: bake plan to the head baker"
+      ],
+      "authority": "Routine prompt: read-only toward the POS; sends only to the head baker.",
+      "release": {
+        "runs_from": "routine prompt + working tree",
+        "deploy_authority": "auto"
+      },
+      "recovery": "Re-run the routine; the plan is regenerated from the POS."
+    },
+    {
+      "id": "review-replies",
+      "name": "Review Replies",
+      "function": "marketing",
+      "classification": "business",
+      "lifecycle": "scheduled",
+      "purpose": "Drafts a reply to every new public review; posts replies to 4-5 star reviews and queues the rest for the owner.",
+      "path": "Projects/Review Replies",
+      "repo": {
+        "path": "Projects/Review Replies",
+        "remote": "example-org/review-replies",
+        "visibility": "private",
+        "default_branch": "main"
+      },
+      "systems": [
+        {
+          "system": "reviews-site",
+          "modes": [
+            "read",
+            "write"
+          ]
+        }
+      ],
+      "automations": [
+        "routine:review-replies-monthly"
+      ],
+      "writes": [
+        "public replies to 4-5 star reviews"
+      ],
+      "authority": "Owner decision D-003: auto-post 4-5 star replies; 1-3 star replies need approval.",
+      "release": {
+        "runs_from": "routine prompt",
+        "deploy_authority": "owner"
+      },
+      "recovery": "Replies can be edited on the review site; the run log lists every reply posted."
+    },
+    {
+      "id": "permit-tracker",
+      "name": "Permit Tracker",
+      "function": "compliance",
+      "classification": "records",
+      "lifecycle": "manual",
+      "purpose": "Tracks food-service permits, inspections and renewal dates for every location.",
+      "path": "Projects/Permit Tracker",
+      "repo": null,
+      "systems": [
+        {
+          "system": "permits-portal",
+          "modes": [
+            "read"
+          ]
+        }
+      ],
+      "authority": "Renewals are submitted and paid by the owner; Claude prepares them.",
+      "recovery": "Single copy on disk (no repository yet)."
+    },
+    {
+      "id": "harborline-ops",
+      "name": "Operations records",
+      "function": "oversight",
+      "classification": "shared-infrastructure",
+      "lifecycle": "live",
+      "purpose": "This repository: registry, status, queue, procedures and the company instructions.",
+      "path": "ops",
+      "repo": {
+        "path": "ops",
+        "remote": "example-org/harborline-ops",
+        "visibility": "private",
+        "default_branch": "main"
+      },
+      "release": {
+        "runs_from": "working tree; instructions installed by ops.py install",
+        "deploy_authority": "auto"
+      },
+      "recovery": "python tools/ops.py install restores the installed instructions."
+    }
+  ]
+}

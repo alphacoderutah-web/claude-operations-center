@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "about": "The things the business operates, with every identifier each system uses.",
+  "assets": [
+    {
+      "id": "store-main-street",
+      "name": "Main Street store",
+      "status": "active",
+      "identifiers": {
+        "pos": "loc-main",
+        "reviews-site": "listing-A",
+        "permits-portal": "permit-FS-A"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "store-harbor",
+      "name": "Harbor store",
+      "status": "active",
+      "identifiers": {
+        "pos": "loc-harbor",
+        "reviews-site": "listing-B",
+        "permits-portal": "permit-FS-B"
+      },
+      "conflicts": [
+        "The review site still shows the pre-renovation opening hours."
+      ]
+    },
+    {
+      "id": "commissary-kitchen",
+      "name": "Commissary kitchen",
+      "status": "active",
+      "identifiers": {
+        "pos": "loc-kitchen",
+        "permits-portal": "permit-FS-C"
+      },
+      "conflicts": []
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "company": {
+    "name": "Your Company",
+    "timezone": "UTC"
+  },
+  "workspace": {
+    "root": "..",
+    "projects_dir": "Projects"
+  },
+  "functions": {
+    "operations": "Operations",
+    "customers": "Customers & service",
+    "money": "Money",
+    "sales-marketing": "Sales & marketing",
+    "compliance": "Legal, licensing & tax",
+    "oversight": "Oversight",
+    "platform": "Platform & shared tooling",
+    "other": "Outside the core business"
+  },
+  "standing_skills": [
+    "agency-conduct",
+    "drive-the-task"
+  ],
+  "instructions": {
+    "source": "instructions/company.md",
+    "install_to": "~/.claude/CLAUDE.md"
+  },
+  "template": {
+    "upstream_url": "https://github.com/alphacoderutah-web/claude-operations-center",
+    "bootstrapped": false
+  }
+}

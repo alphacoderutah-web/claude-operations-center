@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "about": "Dated observations. Each has checked_at, evidence and ttl_hours; after its ttl it reads as unknown.",
+  "observations": []
+}

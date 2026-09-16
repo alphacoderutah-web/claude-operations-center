@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "about": "Where each credential or signed-in session lives and how it is renewed. References only, never values.",
+  "services": []
+}

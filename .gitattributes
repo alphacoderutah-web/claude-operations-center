@@ -1,0 +1,2 @@
+# The tool compares generated files byte for byte; keep LF everywhere
+* text=auto eol=lf

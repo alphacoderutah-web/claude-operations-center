@@ -1,0 +1,19 @@
+# Raw survey and incident evidence stays on the machine (see CLAUDE.md for retention)
+evidence/
+
+# Secrets never live here, but refuse them anyway
+.env
+.env.*
+!.env.example
+.dev.vars
+*.pem
+*.key
+
+# Tool and editor output
+__pycache__/
+*.pyc
+.pytest_cache/
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini

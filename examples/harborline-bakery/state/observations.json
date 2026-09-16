@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "about": "Dated observations. Each has checked_at, evidence and ttl_hours; after its ttl it reads as unknown.",
+  "observations": [
+    {
+      "id": "order-intake-runs",
+      "subject": "order-intake",
+      "status": "ok",
+      "statement": "142 runs in the last 24 h, all exit 0; 9 orders created and confirmed.",
+      "checked_at": "2026-09-16T09:00:00-04:00",
+      "ttl_hours": 3,
+      "evidence": [
+        "Projects/Order Intake/logs/runs.jsonl"
+      ]
+    },
+    {
+      "id": "review-replies-signin",
+      "subject": "review-replies",
+      "status": "attention",
+      "statement": "The September run stopped at a review-site sign-in page; 4 reviews are unanswered.",
+      "checked_at": "2026-09-16T09:00:00-04:00",
+      "ttl_hours": 168,
+      "evidence": [
+        "Projects/Review Replies/runs/2026-09/report.md"
+      ]
+    },
+    {
+      "id": "permit-harbor-renewal",
+      "subject": "store-harbor",
+      "status": "attention",
+      "statement": "Harbor store food-service permit expires 2026-10-15; renewal not started.",
+      "checked_at": "2026-09-16T09:00:00-04:00",
+      "ttl_hours": 72,
+      "evidence": [
+        "Projects/Permit Tracker/permits.md"
+      ]
+    }
+  ]
+}

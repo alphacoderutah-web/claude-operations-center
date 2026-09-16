@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "about": "Every scheduled or always-on job, with how to pause it. Ids look like <kind-prefix>:<native name>.",
+  "automations": []
+}
