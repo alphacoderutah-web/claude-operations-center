@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 — 2026-09-16
+
+- Continuous integration: the test suite and `ops.py validate` run on Ubuntu and Windows with Python 3.10 and 3.13.
+
 ## 1.0.0 — 2026-09-16
 
 First public release, generalized from a working operations center for a multi-property rental

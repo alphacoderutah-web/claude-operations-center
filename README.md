@@ -1,5 +1,7 @@
 # Claude Operations Center
 
+[![tests](https://github.com/alphacoderutah-web/claude-operations-center/actions/workflows/tests.yml/badge.svg)](https://github.com/alphacoderutah-web/claude-operations-center/actions/workflows/tests.yml)
+
 A template that turns one folder into the **operations center** for a company run with
 [Claude Code](https://code.claude.com). Clone it into the company workspace, and a Claude agent
 follows the playbook to build:
