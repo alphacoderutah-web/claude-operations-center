@@ -3,6 +3,7 @@
 ## 1.0.1 — 2026-09-16
 
 - Continuous integration: the test suite and `ops.py validate` run on Ubuntu and Windows with Python 3.10 and 3.13.
+- Fix: the tool resolves its own folder once, so generated files never mix short (8.3) and long spellings of the same Windows path.
 
 ## 1.0.0 — 2026-09-16
 

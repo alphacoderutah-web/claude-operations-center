@@ -121,6 +121,8 @@ class Context:
 
 
 def load_context(root: Path = REPO) -> Context:
+    # Resolve once so every path the tool writes uses one spelling (Windows can hand out 8.3 short names).
+    root = root.resolve()
     return Context(root=root, config=load_json(root / CONFIG_FILE))
 
 

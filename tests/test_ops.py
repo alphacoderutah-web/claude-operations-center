@@ -37,7 +37,7 @@ class Workspace:
 
     def __init__(self) -> None:
         self._tmp = tempfile.TemporaryDirectory()
-        self.workspace = Path(self._tmp.name) / "company"
+        self.workspace = Path(self._tmp.name).resolve() / "company"  # the tool resolves paths too
         self.root = self.workspace / "ops"
         (self.root / "registry").mkdir(parents=True)
         (self.root / "state").mkdir()
