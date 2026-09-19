@@ -1,2 +1,6 @@
 # The tool compares generated files byte for byte; keep LF everywhere
 * text=auto eol=lf
+
+# The brain CLI (brain.md 0.3.0) misreads CRLF, so keep project brain files LF on every checkout.
+BRAIN.md text eol=lf
+brain/** text eol=lf
